@@ -1,0 +1,35 @@
+{
+  "name": "ultimate-line-chart",
+  "version": "0.0.1",
+  "description": "The Ultimate Line Chart for Apache Zeppelin using <a href src=\"https://www.amcharts.com/\">amcharts</a>",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "zeppelin",
+    "helium",
+    "visualization",
+    "ultimate"
+  ],
+  "author": "1ambda",
+  "license": "SEE LICENSE IN <LICENSE>",
+  "dependencies": {
+    "amcharts3": "amcharts/amcharts3",
+    "amcharts3-export": "amcharts/export",
+    "zeppelin-tabledata": "*",
+    "zeppelin-vis": "*"
+  },
+  "helium": {
+    "icon": "<img width=\"21\" height=\"21\" class=\"icon icons8-Line-Chart\" src=\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAGyklEQVRoQ+2Yf0xVdRTAz/l+73sgqEBD1Er80abRKoGnmy7TZ2urRPRlv1yJPhP6w2zhQhLsx3POX+CGbdUqaDxFWzVNCLBaW5BpmmJDp5GbJbZpFC6hpw+4797vad+Lz15Fj3sfNKTxHf9w3/ec7/mcc+4553sR/icL/yccMARyo0VyKCJDEfmbB5aU5bsQYBkQNHNFXe9dvr0tEicNaGpJCAXZB5PH3Wq/1N7eedn3+/nyp7fePuhAskrX1KeMHz9n2uQUULUAfFj/BagUmP1+TslXVmEGNCJLy/K9iXFxWfelOVjL5d/gwIlGACD51wgIXk3Al+89Uywf9roGFCSrNG8358piIQSTlkbZbM9e7VK/Vhi4CdCJAFMBoJkIKhFE/c6cbVVPvrMm1c7ZbiJIFkRlFTlFq6VsRCBSGWfwvFSgC3jNrNdC3bq0NN8DALkakVM+t9sCzX9/0d3layfomnABkBMRFwJROzIcPmVcMk9KuAmOft+kdnR2vViRU7TdMohUDoJOjx89RpEGNP/SoiPDO7zLtzT3Gv9rG7LeXeNGwnIB8PCu7KJKM3Lu8tx4NcBXKYxvWHL/A4bIyR/Pwokfzn5ZkVMso2dtSU+OiInJW3jPvbFSsvLQgU6fv6NAesWMpiWleU6GrI6QllesKPaakQnukTCkR12YMi45ZnRCAhw906T6I43IU2UvrLRz2+uZM2cZTqg5fBACun6KiJ7blbOtPpxhMiUVBnUAsGNndnGuFYjgXqnDxtl7RJQMQGVBPZYiIj0iNFudoigTNV2Pk8ptinJADQQIEecQUD0Rre8JyJDVbecAsGpndpE7EohwMqZBur2J+wignXPVCRAdLxUH3w2ZMgjoCQUShG1GUSCyE6ADETsrsotS+xvCdNX6MyWwinE1N9wYEQrEEEXy6NGCAPlPv7QACT11Z862kwMC0l1hoMRqSiwpzfOOHBab5Zo12+gRlYe+8vv8/nVmi4JV2LCpFSyTRLDaqgFSVmH87cyZs+zSqOrDB9WALp4wW277DSSrNL8EEXIjKZNBI1Z41+0JaIFHuouCbe+77o2PWjXQ7P7rEQkdpwFEEgLLECBcvZXU3g4yGmhIUehtf6S/GyCh43RrW7to8/mgS9cdkYwekRrSVzkDpKdxWhOUdqOCuDx18arqn7B/U8b1ydgAkeP0qLj4J+ampUcHx2nG1YRIb2t99W44+UWez1ZqqvaG0TsYO4NK9IxKz9w2A0R2XRDR3wgSk+X/cpwuXbbxzf/SoEh0u9Z+MkEwcS4lJQXi4+Pg1KnTnT6f7+2PN2Xk/qX8GrN+D+N0JIdakZlXWJvK4dq1AOC10JSRxutcTAVBTgJwMsTUmTNngKJw+OHHc3DhwsWq6k0Z8t4/sEsaSlycTkwcZVwLWlsvERFsBaC7ESAVECYAQTsBNCJCPTL2dGxsTNLIESOiWn5u6dIFLK7ePK8yYhBpgNGxtzxk+h7Sk8sWFNZ6oodF502f5jCuBceOHYcOv/8iIn5OiPU6QONfIuSpixeq30MgAdErIYz3JZJ4LHr50z2arhuNjnNlz74NDzwWiR4pk1FQ84qNs/UOh8NQcbzh24Au6PGggWb1WgbJLKx1c2TvOKal2/pysJRdUFgrr8vbOWPndSHGy2cK53s/2vCg5QnAMkh3KgzLnz4tfVh3KjTo/qsdb9VszVxl1nuyD+hd/nIEmEsIudWbMrx9TVXLIJkFNXmMseLExEQBAOJSaysjAha8VNVsyQx7S5QVSiHYR0DtOqI7NP/NOqKnfZZAgqmgE73KASZJhRridiZEPCLzIMIcou5bYhAo1NNBeSDawaJic2Uj64vxobKmQTILa8uR4OFgKvRkwPy11c5QIIUzpguabVQVxi+SrseGk+8LVK8gRj6r/hIJoSE4zaSCAQTsLa6wKQ5HumFfQ8O3FNDFC/u3ZJT0xeB/kw0LIiGE6q8jgAQdwGUGInjQP4pCw/GrHf6Ol6o3zzf12cgq7L+CXJtr9hER8qhYp9V8Njo2E98lJiVxadSlX3/VUbA7+tpATUVEVhS7PaZZjsgKUB0RnuBRMS6rEMHDuisUGd+vZFGwEtGIIiJTiLTOIyTEFKmAIXYIIT78ePP8fv/+ZNVAs/uN1FpQUOMdPnLE4rvuvDOqra0dmpqagNljEiKNhNnD+3OfAZJZUFt/y603z7lt0kTQNB0OHz4CGkDaf5kK/QlhlPdukP0uxuCDsWPH2H2+K51Xrlz5qWrjPCPNBsu6XrUkDCC5EaCZ2WM8gymtrkdksHg9nJ29dvbBAjkEcqNFaigiN1pE/gBhOClg98yr4QAAAABJRU5ErkJggg==\" >",
+    "license": "<a href=\"https://www.amcharts.com/licenses/javascript-charts-free-license\">Amcharts License</a>"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/1ambda/zeppelin-ultimate-line-chart.git"
+  },
+  "bugs": {
+    "url": "https://github.com/1ambda/zeppelin-ultimate-line-chart/issues"
+  },
+  "homepage": "https://github.com/1ambda/zeppelin-ultimate-line-chart#readme"
+}
