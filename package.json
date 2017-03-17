@@ -17,6 +17,7 @@
   "dependencies": {
     "amcharts3": "amcharts/amcharts3",
     "amcharts3-export": "amcharts/export",
+    "human-format": "^0.8.0",
     "zeppelin-tabledata": "*",
     "zeppelin-vis": "*"
   },
