@@ -10,26 +10,26 @@ import 'amcharts3/amcharts/themes/light'
 // import 'amcharts3-export/export.css'
 
 const CommonParameter = {
-  'dateFormat': { valueType: 'string', defaultValue: '', description: 'format of date (<a href="https://docs.amcharts.com/3/javascriptcharts/AmGraph#dateFormat">doc</a>) (e.g YYYY-MM-DD)', },
-  'graphType': { valueType: 'string', defaultValue: 'line', description: 'graph type', widget: 'option', optionValues: [ 'line', 'smoothedLine', 'step', ], },
-  'bulletType': { valueType: 'string', defaultValue: 'round', description: 'type of bullet', widget: 'option', optionValues: [ 'round', 'round-white', 'none', ], },
-  'balloonType': { valueType: 'string', defaultValue: 'simple', description: 'type of balloon', widget: 'option', optionValues: [ 'simple', 'color', 'drop-shaped', ], },
-  'inverted': { valueType: 'boolean', defaultValue: false, description: 'invert x and y axes', widget: 'checkbox', },
-  'logarithmicYAxis': { valueType: 'boolean', defaultValue: false, description: 'use logarithmic scale in yAxis', widget: 'checkbox', },
-  'rotateXAxisLabel': { valueType: 'string', defaultValue: 'none', description: 'rotate xAxis labels', widget: 'option', optionValues: [ 'none', '+90', '-90', ], },
-  'xAxisPosition': { valueType: 'string', defaultValue: 'bottom', description: 'xAxis position', widget: 'option', optionValues: [ 'bottom', 'top', ], },
   'xAxisName': { valueType: 'string', defaultValue: '', description: 'name of xAxis', },
-  'xAxisUnit': { valueType: 'string', defaultValue: '', description: 'unit of xAxis', },
-  'yAxisPosition': { valueType: 'string', defaultValue: 'left', description: 'yAxis position', widget: 'option', optionValues: [ 'left', 'right', ], },
   'yAxisName': { valueType: 'string', defaultValue: '', description: 'name of yAxis', },
+  'xAxisUnit': { valueType: 'string', defaultValue: '', description: 'unit of xAxis', },
   'yAxisUnit': { valueType: 'string', defaultValue: '', description: 'unit of yAxis', },
   'balloonText': { valueType: 'string', defaultValue: '', description: 'text format of balloon (<a href="https://docs.amcharts.com/3/javascriptcharts/AmGraph#balloonText">doc</a>)', },
   'legendValueText': { valueType: 'string', defaultValue: '', description: 'text format of legend (<a href="https://docs.amcharts.com/3/javascriptcharts/AmGraph#legendValueText">doc</a>)', },
-  'dashLength': { valueType: 'int', defaultValue: 0, description: 'the length of dash', },
-  'noStepRisers': { valueType: 'boolean', defaultValue: false, description: 'no risers in step line', widget: 'checkbox', },
   'hideBulletsCount': { valueType: 'int', defaultValue: 50, description: 'bullets will be shown until this count', },
   'yAxisGuides': { valueType: 'JSON', defaultValue: '', description: 'guides of yAxis (<a href="https://docs.amcharts.com/3/javascriptcharts/ValueAxis#guides">doc</a>) (<a href="https://www.amcharts.com/demos/logarithmic-scale/">example</a>)', widget: 'textarea', },
   'trendLines': { valueType: 'JSON', defaultValue: '', description: 'trend lines (<a href="https://docs.amcharts.com/3/javascriptcharts/TrendLine">doc</a>) (<a href="https://www.amcharts.com/demos/trend-lines/">example</a>)', widget: 'textarea', },
+  'bulletType': { valueType: 'string', defaultValue: 'round', description: 'type of bullet', widget: 'option', optionValues: [ 'round', 'round-white', 'none', ], },
+  'balloonType': { valueType: 'string', defaultValue: 'simple', description: 'type of balloon', widget: 'option', optionValues: [ 'simple', 'color', 'drop-shaped', ], },
+  'xAxisPosition': { valueType: 'string', defaultValue: 'bottom', description: 'xAxis position', widget: 'option', optionValues: [ 'bottom', 'top', ], },
+  'yAxisPosition': { valueType: 'string', defaultValue: 'left', description: 'yAxis position', widget: 'option', optionValues: [ 'left', 'right', ], },
+  'logarithmicYAxis': { valueType: 'boolean', defaultValue: false, description: 'use logarithmic scale in yAxis', widget: 'checkbox', },
+  'rotateXAxisLabel': { valueType: 'string', defaultValue: 'none', description: 'rotate xAxis labels', widget: 'option', optionValues: [ 'none', '+90', '-90', ], },
+  'inverted': { valueType: 'boolean', defaultValue: false, description: 'invert x and y axes', widget: 'checkbox', },
+  'dashLength': { valueType: 'int', defaultValue: 0, description: 'the length of dash', },
+  'noStepRisers': { valueType: 'boolean', defaultValue: false, description: 'no risers in step line', widget: 'checkbox', },
+  'graphType': { valueType: 'string', defaultValue: 'line', description: 'graph type', widget: 'option', optionValues: [ 'line', 'smoothedLine', 'step', ], },
+  'dateFormat': { valueType: 'string', defaultValue: '', description: 'format of date (<a href="https://docs.amcharts.com/3/javascriptcharts/AmGraph#dateFormat">doc</a>) (e.g YYYY-MM-DD)', },
 }
 
 export default class Chart extends Visualization {
@@ -52,7 +52,7 @@ export default class Chart extends Visualization {
           transform: { method: 'raw', },
           axis: {
             'xAxis': { dimension: 'single', axisType: 'unique', },
-            'yAxis': { dimension: 'multiple', axisType: 'value'},
+            'yAxis': { dimension: 'multiple', axisType: 'value', },
           },
           parameter: CommonParameter,
         },
@@ -60,7 +60,6 @@ export default class Chart extends Visualization {
       },
     }
 
-    this.spec = spec
     this.transformation = new AdvancedTransformation(config, spec)
   }
 
@@ -138,7 +137,26 @@ export default class Chart extends Visualization {
   }
 }
 
-export function createBasicChartGraphs(parameter, groupNameSet) {
+export function createNoGroupChartData(rows, keyColumn, otherColumns) {
+  const refinedRows = []
+
+  for(let i = 0; i < rows.length; i++) {
+    const row = rows[i]
+
+    const refined = { [keyColumn.name]: row[keyColumn.index], }
+
+    for(let j = 0; j < otherColumns.length; j++) {
+      const col = otherColumns[j]
+      refined[col.name] = row[col.index]
+    }
+
+    refinedRows.push(refined)
+  }
+
+  return refinedRows
+}
+
+export function createCommonChartGraphs(parameter, groupNameSet) {
 
   let {
     xAxisUnit, yAxisUnit, graphType, dashLength, noStepRisers,
@@ -206,7 +224,7 @@ export function createCommonChartOption(data, parameter, keyColumnName, groupNam
     xAxisName, yAxisName,
   } = parameter
 
-  const graphs = createBasicChartGraphs(parameter, groupNameSet)
+  const graphs = createCommonChartGraphs(parameter, groupNameSet)
 
   const option = {
     path: 'https://cdnjs.cloudflare.com/ajax/libs/amcharts/3.21.0/',
@@ -260,23 +278,5 @@ export function createCommonChartOption(data, parameter, keyColumnName, groupNam
   return option
 }
 
-export function createNoGroupChartData(rows, keyColumn, otherColumns) {
-  const refinedRows = []
-
-  for(let i = 0; i < rows.length; i++) {
-    const row = rows[i]
-
-    const refined = { [keyColumn.name]: row[keyColumn.index], }
-
-    for(let j = 0; j < otherColumns.length; j++) {
-      const col = otherColumns[j]
-      refined[col.name] = row[col.index]
-    }
-
-    refinedRows.push(refined)
-  }
-
-  return refinedRows
-}
 
 
