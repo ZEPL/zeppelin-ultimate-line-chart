@@ -46,6 +46,7 @@ export default class Chart extends Visualization {
     const spec = {
       charts: {
         'basic': {
+          transform: { method: 'object', },
           /** default transform.method is flatten cube */
           axis: {
             'xAxis': { dimension: 'multiple', axisType: 'key', },
@@ -101,8 +102,9 @@ export default class Chart extends Visualization {
       return /** have nothing to display, if aggregator is not specified at all */
     }
 
-    const { rows, keyColumnName, groupNameSet, } = transformer()
-    const chartOption = createCommonChartOption(rows, parameter, keyColumnName, groupNameSet)
+    const { rows, keyColumnName, selectorSet, } = transformer()
+    console.log({ rows, keyColumnName, selectorSet, })
+    const chartOption = createCommonChartOption(rows, parameter, keyColumnName, selectorSet)
 
     this.clearChart()
     this.chartInstance = AmCharts.makeChart(this.getChartElementId(), chartOption)
@@ -122,8 +124,8 @@ export default class Chart extends Visualization {
 
     const rows = transformer()
     const data = createNoGroupChartData(rows, keyColumn, valueColumns)
-    const groupNameSet = new Set(valueColumns.map(c => c.name))
-    const chartOption = createCommonChartOption(data, parameter, keyColumn.name, groupNameSet)
+    const selectorSet = valueColumns.map(c => c.name)
+    const chartOption = createCommonChartOption(data, parameter, keyColumn.name, selectorSet)
 
     this.clearChart()
     this.chartInstance = AmCharts.makeChart(this.getChartElementId(), chartOption)
@@ -163,7 +165,7 @@ export function createNoGroupChartData(rows, keyColumn, otherColumns) {
   return refinedRows
 }
 
-export function createCommonChartGraphs(parameter, groupNameSet) {
+export function createCommonChartGraphs(parameter, selectorSet) {
 
   let {
     xAxisUnit, yAxisUnit, graphType, dashLength, noStepRisers,
@@ -176,14 +178,14 @@ export function createCommonChartGraphs(parameter, groupNameSet) {
   let defaultBalloonText = `[[title]]: <b>[[value]]</b> ${yAxisUnit}`
   let defaultLegendValueText = (yAxisUnit) ? `[[value]] ${yAxisUnit}` : '[[value]]'
 
-  for (let groupName of groupNameSet) {
+  for (let selector of selectorSet) {
     const g = {
       id: `g${counter}`,
       type: graphType,
       dashLength: dashLength,
       noStepRisers: noStepRisers,
-      title: groupName,
-      valueField: groupName,
+      title: selector,
+      valueField: selector,
       bulletSize: 5,
       hideBulletsCount,
       lineThickness: 2,
@@ -219,7 +221,7 @@ export function createCommonChartGraphs(parameter, groupNameSet) {
   return graphs
 }
 
-export function createCommonChartOption(data, parameter, keyColumnName, groupNameSet) {
+export function createCommonChartOption(data, parameter, keyColumnName, selectorSet) {
   const {
     dateFormat,
     inverted, logarithmicYAxis, rotateXAxisLabel,
@@ -229,7 +231,7 @@ export function createCommonChartOption(data, parameter, keyColumnName, groupNam
     xAxisName, yAxisName, yAxisValueFormat, yAxisValuePrecision, yAxisValueInside,
   } = parameter
 
-  const graphs = createCommonChartGraphs(parameter, groupNameSet)
+  const graphs = createCommonChartGraphs(parameter, selectorSet)
 
   const option = {
     path: 'https://cdnjs.cloudflare.com/ajax/libs/amcharts/3.21.0/',
