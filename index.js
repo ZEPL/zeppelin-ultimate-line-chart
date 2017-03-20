@@ -4,6 +4,7 @@ import AdvancedTransformation from 'zeppelin-tabledata/advanced-transformation'
 import 'amcharts3'
 import 'amcharts3/amcharts/serial'
 import 'amcharts3/amcharts/themes/light'
+import 'amcharts3/amcharts/plugins/responsive/responsive.min'
 
 // TODO: ZEPPELIN-2088
 // import 'amcharts3-export'
@@ -32,6 +33,8 @@ const CommonParameter = {
   'xAxisUnit': { valueType: 'string', defaultValue: '', description: 'unit of xAxis', },
   'yAxisUnit': { valueType: 'string', defaultValue: '', description: 'unit of yAxis', },
   'rotateXAxisLabel': { valueType: 'string', defaultValue: 'none', description: 'rotate xAxis labels', widget: 'option', optionValues: [ 'none', '+90', '-90', ], },
+  'showLegend': { valueType: 'boolean', defaultValue: true, description: 'show legend', widget: 'checkbox', },
+  'legendPosition': { valueType: 'string', defaultValue: 'bottom', description: 'position of legend', widget: 'option', optionValues: [ 'bottom', 'top', 'left', 'right', ], },
   'inverted': { valueType: 'boolean', defaultValue: false, description: 'invert x and y axes', widget: 'checkbox', },
   'noStepRisers': { valueType: 'boolean', defaultValue: false, description: 'no risers in step line', widget: 'checkbox', },
   'dashLength': { valueType: 'int', defaultValue: 0, description: 'the length of dash', },
@@ -225,7 +228,7 @@ export function createCommonChartOption(data, parameter, keyColumnName, selector
   const {
     dateFormat,
     inverted, logarithmicYAxis, rotateXAxisLabel,
-    balloonType,
+    balloonType, showLegend, legendPosition,
     xAxisPosition, yAxisPosition, showXAxisScroll, showYAxisScroll,
     yAxisGuides, trendLines,
     xAxisName, yAxisName, yAxisValueFormat, yAxisValuePrecision, yAxisValueInside,
@@ -259,7 +262,6 @@ export function createCommonChartOption(data, parameter, keyColumnName, selector
     }],
     graphs: graphs,
     balloon: { borderThickness: 0.8, shadowAlpha: 0 },
-    legend: { align: 'center', equalWidths: false, },
     chartCursor: {
       valueLineEnabled: true,
       valueLineBalloonEnabled: true,
@@ -270,7 +272,12 @@ export function createCommonChartOption(data, parameter, keyColumnName, selector
       valueZoomable: false,
     },
     export: { enabled: true },
+    responsive: { enabled: true },
     dataProvider: data,
+  }
+
+  if (showLegend) {
+    option.legend = { align: 'center', equalWidths: true, position: legendPosition, }
   }
 
   if (balloonType === 'drop-shaped') { option.balloon.borderThickness = 0.3 }
