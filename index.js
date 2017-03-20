@@ -102,9 +102,9 @@ export default class Chart extends Visualization {
       return /** have nothing to display, if aggregator is not specified at all */
     }
 
-    const { rows, keyColumnName, selectorSet, } = transformer()
-    console.log({ rows, keyColumnName, selectorSet, })
-    const chartOption = createCommonChartOption(rows, parameter, keyColumnName, selectorSet)
+    const { rows, keyColumnName, selectors, } = transformer()
+    console.log({ rows, keyColumnName, selectors, })
+    const chartOption = createCommonChartOption(rows, parameter, keyColumnName, selectors)
 
     this.clearChart()
     this.chartInstance = AmCharts.makeChart(this.getChartElementId(), chartOption)
@@ -124,8 +124,8 @@ export default class Chart extends Visualization {
 
     const rows = transformer()
     const data = createNoGroupChartData(rows, keyColumn, valueColumns)
-    const selectorSet = valueColumns.map(c => c.name)
-    const chartOption = createCommonChartOption(data, parameter, keyColumn.name, selectorSet)
+    const selectors = valueColumns.map(c => c.name)
+    const chartOption = createCommonChartOption(data, parameter, keyColumn.name, selectors)
 
     this.clearChart()
     this.chartInstance = AmCharts.makeChart(this.getChartElementId(), chartOption)
@@ -165,7 +165,7 @@ export function createNoGroupChartData(rows, keyColumn, otherColumns) {
   return refinedRows
 }
 
-export function createCommonChartGraphs(parameter, selectorSet) {
+export function createCommonChartGraphs(parameter, selectors) {
 
   let {
     xAxisUnit, yAxisUnit, graphType, dashLength, noStepRisers,
@@ -178,7 +178,7 @@ export function createCommonChartGraphs(parameter, selectorSet) {
   let defaultBalloonText = `[[title]]: <b>[[value]]</b> ${yAxisUnit}`
   let defaultLegendValueText = (yAxisUnit) ? `[[value]] ${yAxisUnit}` : '[[value]]'
 
-  for (let selector of selectorSet) {
+  for (let selector of selectors) {
     const g = {
       id: `g${counter}`,
       type: graphType,
@@ -221,7 +221,7 @@ export function createCommonChartGraphs(parameter, selectorSet) {
   return graphs
 }
 
-export function createCommonChartOption(data, parameter, keyColumnName, selectorSet) {
+export function createCommonChartOption(data, parameter, keyColumnName, selectors) {
   const {
     dateFormat,
     inverted, logarithmicYAxis, rotateXAxisLabel,
@@ -231,7 +231,7 @@ export function createCommonChartOption(data, parameter, keyColumnName, selector
     xAxisName, yAxisName, yAxisValueFormat, yAxisValuePrecision, yAxisValueInside,
   } = parameter
 
-  const graphs = createCommonChartGraphs(parameter, selectorSet)
+  const graphs = createCommonChartGraphs(parameter, selectors)
 
   const option = {
     path: 'https://cdnjs.cloudflare.com/ajax/libs/amcharts/3.21.0/',
