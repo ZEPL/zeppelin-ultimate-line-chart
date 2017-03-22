@@ -24,6 +24,7 @@ export default class Chart extends Visualization {
       charts: {
         'line': {
           transform: { method: 'object', },
+          sharedAxis: true,
           axis: {
             'xAxis': { dimension: 'multiple', axisType: 'key', },
             'yAxis': { dimension: 'multiple', axisType: 'aggregator'},
@@ -34,6 +35,7 @@ export default class Chart extends Visualization {
 
         'dashed': {
           transform: { method: 'object', },
+          sharedAxis: true,
           axis: {
             'xAxis': { dimension: 'multiple', axisType: 'key', },
             'yAxis': { dimension: 'multiple', axisType: 'aggregator'},
@@ -44,6 +46,7 @@ export default class Chart extends Visualization {
 
         'step': {
           transform: { method: 'object', },
+          sharedAxis: true,
           axis: {
             'xAxis': { dimension: 'multiple', axisType: 'key', },
             'yAxis': { dimension: 'multiple', axisType: 'aggregator'},
