@@ -153,6 +153,8 @@ export function createCommonChartOption(graphs, data, parameter, keyColumnName) 
     }
   }
 
+  setYAxisValueFormatForAmcharts(option, yAxisValueFormat, yAxisValuePrecision)
+
   if (showYAxisScroll) {
     option.valueScrollbar = {
       oppositeAxis: false, offset: 15, scrollbarHeight: 10,
@@ -163,6 +165,18 @@ export function createCommonChartOption(graphs, data, parameter, keyColumnName) 
     }
   }
 
+  if (yAxisValueInside) { option.valueAxes[0].inside = true }
+
+  if (mainTitle !== '') { option.titles = [{ text: mainTitle, }] }
+  if (subTitle !== '') {
+    if (typeof option.titles === 'undefined') { option.titles = [] }
+    option.titles.push({ text: subTitle, bold: false, })
+  }
+
+  return option
+}
+
+export function setYAxisValueFormatForAmcharts(option, yAxisValueFormat, yAxisValuePrecision) {
   // `labelFunction` https://docs.amcharts.com/3/javascriptcharts/ValueAxis#labelFunction
   // `HumanFormat` https://github.com/JsCommunity/human-format
   if (yAxisValueFormat === 'no-comma') {
@@ -199,14 +213,4 @@ export function createCommonChartOption(graphs, data, parameter, keyColumnName) 
       return value
     }
   }
-
-  if (yAxisValueInside) { option.valueAxes[0].inside = true }
-
-  if (mainTitle !== '') { option.titles = [{ text: mainTitle, }] }
-  if (subTitle !== '') {
-    if (typeof option.titles === 'undefined') { option.titles = [] }
-    option.titles.push({ text: subTitle, bold: false, })
-  }
-
-  return option
 }

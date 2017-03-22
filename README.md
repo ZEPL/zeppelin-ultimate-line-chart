@@ -6,7 +6,9 @@ The Ultimate Line Chart for Apache Zeppelin using [amcharts](https://www.amchart
 
 ## Ultimate Charts
 
-- [ultimate-line-chart](https://github.com/1ambda/zeppelin-ultimate-line-chart)
+- **[ultimate-line-chart](https://github.com/1ambda/zeppelin-ultimate-line-chart)** ([amcharts](https://www.amcharts.com/))
+- [ultimate-area-chart](https://github.com/1ambda/zeppelin-ultimate-area-chart) ([amcharts](https://www.amcharts.com/))
+- [ultimate-column-chart](https://github.com/1ambda/zeppelin-ultimate-column-chart) ([highcharts](http://www.highcharts.com/))
 
 ## License
 
