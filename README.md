@@ -2,13 +2,18 @@
 
 The Ultimate Line Chart for Apache Zeppelin using [amcharts](https://www.amcharts.com/)
 
-**compatible with Zeppelin 0.8.0-SNAPSHOT**
+## Compatibility
+
+| Chart Version | Zeppelin Version |
+| :---: | :---: |
+| ALL | 0.8.0-SNAPSHOT+ |
 
 ## Ultimate Charts
 
-- **[ultimate-line-chart](https://github.com/1ambda/zeppelin-ultimate-line-chart)** ([amcharts](https://www.amcharts.com/))
+- **ultimate-line-chart** ([amcharts](https://www.amcharts.com/))
 - [ultimate-area-chart](https://github.com/1ambda/zeppelin-ultimate-area-chart) ([amcharts](https://www.amcharts.com/))
 - [ultimate-column-chart](https://github.com/1ambda/zeppelin-ultimate-column-chart) ([highcharts](http://www.highcharts.com/))
+- [ultimate-pie-chart](https://github.com/1ambda/zeppelin-ultimate-column-chart) ([highcharts](http://www.highcharts.com/))
 
 ## License
 
