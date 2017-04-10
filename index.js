@@ -95,6 +95,16 @@ export default class Chart extends Visualization {
         </div>`
   }
 
+  showError(error) {
+    this.clearChart()
+    this.getChartElement().innerHTML = `
+        <div style="margin-top: 60px; text-align: center; font-weight: 300">
+            <span style="font-size:30px; color: #e4573c;">
+                ${error.message} 
+            </span>
+        </div>`
+  }
+
   drawLineChart(parameter, column, transformer) {
     if (column.aggregator.length === 0) {
       this.hideChart()
@@ -169,10 +179,15 @@ export default class Chart extends Visualization {
 
     if (!chartChanged && !parameterChanged) { return }
 
-    if (chart === 'line') { this.drawLineChart(parameter, column, transformer) }
-    else if (chart === 'dashed') { this.drawDashedChart(parameter, column, transformer) }
-    else if (chart === 'step') { this.drawStepChart(parameter, column, transformer) }
-    else if (chart === 'no-group') { this.drawNoGroupChart(parameter, column, transformer) }
+    try {
+      if (chart === 'line') { this.drawLineChart(parameter, column, transformer) }
+      else if (chart === 'dashed') { this.drawDashedChart(parameter, column, transformer) }
+      else if (chart === 'step') { this.drawStepChart(parameter, column, transformer) }
+      else if (chart === 'no-group') { this.drawNoGroupChart(parameter, column, transformer) }
+    } catch (error) {
+      console.error(error)
+      this.showError(error)
+    }
   }
 
   getTransformation() {
