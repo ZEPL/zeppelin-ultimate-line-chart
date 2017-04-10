@@ -27,7 +27,7 @@ export default class Chart extends Visualization {
           sharedAxis: true,
           axis: {
             'xAxis': { dimension: 'multiple', axisType: 'key', },
-            'yAxis': { dimension: 'multiple', axisType: 'aggregator'},
+            'yAxis': { dimension: 'multiple', axisType: 'aggregator', minAxisCount: 1, },
             'category': { dimension: 'multiple', axisType: 'group', },
           },
           parameter: CommonParameter,
@@ -38,7 +38,7 @@ export default class Chart extends Visualization {
           sharedAxis: true,
           axis: {
             'xAxis': { dimension: 'multiple', axisType: 'key', },
-            'yAxis': { dimension: 'multiple', axisType: 'aggregator'},
+            'yAxis': { dimension: 'multiple', axisType: 'aggregator', minAxisCount: 1, },
             'category': { dimension: 'multiple', axisType: 'group', },
           },
           parameter: DashedLineParameter,
@@ -49,7 +49,7 @@ export default class Chart extends Visualization {
           sharedAxis: true,
           axis: {
             'xAxis': { dimension: 'multiple', axisType: 'key', },
-            'yAxis': { dimension: 'multiple', axisType: 'aggregator'},
+            'yAxis': { dimension: 'multiple', axisType: 'aggregator', minAxisCount: 1, },
             'category': { dimension: 'multiple', axisType: 'group', },
           },
           parameter: StepLineParameter,
@@ -59,7 +59,7 @@ export default class Chart extends Visualization {
           transform: { method: 'raw', },
           axis: {
             'xAxis': { dimension: 'single', axisType: 'unique', },
-            'yAxis': { dimension: 'multiple', axisType: 'value', },
+            'yAxis': { dimension: 'multiple', axisType: 'value', minAxisCount: 1, },
           },
           parameter: CommonParameter,
         },
