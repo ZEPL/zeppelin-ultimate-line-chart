@@ -2,6 +2,8 @@
 
 The Ultimate Line Chart for Apache Zeppelin using [amcharts](https://www.amcharts.com/)
 
+![](https://raw.githubusercontent.com/ZEPL/zeppelin-ultimate-line-chart/master/screenshots/640.gif)
+
 ## Compatibility
 
 | Chart Version | Zeppelin Version |
