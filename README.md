@@ -11,12 +11,12 @@ The Ultimate Line Chart for Apache Zeppelin using [amcharts](https://www.amchart
 ## Ultimate Charts
 
 - **ultimate-line-chart** ([amcharts](https://www.amcharts.com/))
-- [ultimate-area-chart](https://github.com/1ambda/zeppelin-ultimate-area-chart) ([amcharts](https://www.amcharts.com/))
-- [ultimate-column-chart](https://github.com/1ambda/zeppelin-ultimate-column-chart) ([highcharts](http://www.highcharts.com/))
-- [ultimate-pie-chart](https://github.com/1ambda/zeppelin-ultimate-pie-chart) ([highcharts](http://www.highcharts.com/))
-- [ultimate-range-chart](https://github.com/1ambda/zeppelin-ultimate-range-chart) ([highcharts](http://www.highcharts.com/))
-- [ultimate-scatter-chart](https://github.com/1ambda/zeppelin-ultimate-scatter-chart) ([highcharts](http://www.highcharts.com/))
-- [ultimate-heatmap-chart](https://github.com/1ambda/zeppelin-ultimate-heatmap-chart) ([highcharts](http://www.highcharts.com/))
+- [ultimate-area-chart](https://github.com/ZEPL/zeppelin-ultimate-area-chart) ([amcharts](https://www.amcharts.com/))
+- [ultimate-column-chart](https://github.com/ZEPL/zeppelin-ultimate-column-chart) ([highcharts](http://www.highcharts.com/))
+- [ultimate-pie-chart](https://github.com/ZEPL/zeppelin-ultimate-pie-chart) ([highcharts](http://www.highcharts.com/))
+- [ultimate-range-chart](https://github.com/ZEPL/zeppelin-ultimate-range-chart) ([highcharts](http://www.highcharts.com/))
+- [ultimate-scatter-chart](https://github.com/ZEPL/zeppelin-ultimate-scatter-chart) ([highcharts](http://www.highcharts.com/))
+- [ultimate-heatmap-chart](https://github.com/ZEPL/zeppelin-ultimate-heatmap-chart) ([highcharts](http://www.highcharts.com/))
 
 ## License
 
