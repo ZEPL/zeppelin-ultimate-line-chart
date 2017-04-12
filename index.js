@@ -6,7 +6,6 @@ import 'amcharts3/amcharts/serial'
 import 'amcharts3/amcharts/themes/light'
 import 'amcharts3/amcharts/plugins/responsive/responsive.min'
 
-// TODO: ZEPPELIN-2088
 // import 'amcharts3-export'
 // import 'amcharts3-export/export.css'
 
